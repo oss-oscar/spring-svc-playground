@@ -1,0 +1,26 @@
+name: Pull request style checker
+
+on: [pull_request]
+
+concurrency :
+  group: pull-request-styler_${{ github.head_ref }}
+  cancel-in-progress : true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Check code format
+        run: ./gradlew ktlintCheck

@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+
+  redis:
+    image: redis
+    container_name: redis-svc-kotlin-playground
+    ports:
+      - "6379:6379"
+
+  database:
+    image: postgres
+    container_name: postgres-svc-kotlin-playground
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_DB: pokemon
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./docker/postgres:/docker-entrypoint-initdb.d
+    ports:
+      - "15432:5432"

@@ -6,3 +6,9 @@ tratando así de evitar usar el @Component que es algo más generico
 Utilizo OpenFeign como client HTTP, que esta inspirado en Retrofit (https://github.com/OpenFeign/feign)
 
 Estamos usando Swagger con este repo https://springdoc.org/
+
+## Observabilty
+
+Tener una visión clara de que esta pasando en nuestro svc una vez es desplegado es crucial
+
+https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.observability

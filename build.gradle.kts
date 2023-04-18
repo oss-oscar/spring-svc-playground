@@ -22,6 +22,7 @@ dependencies {
     implementation(libs.springboot.actuator)
     implementation(libs.springboot.cache)
     implementation(libs.springboot.data.redis)
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // Spring cloud dependencies
     implementation(libs.springcloud.openFeign)
@@ -43,6 +44,9 @@ dependencies {
     // Shedlock scheduler
     implementation(libs.shedlock.spring)
     implementation(libs.shedlock.redis)
+
+    // Observability
+    implementation("io.micrometer:micrometer-registry-prometheus:1.10.6")
 
     // Test dependencies
     testImplementation(libs.springboot.test)

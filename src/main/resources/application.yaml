@@ -8,3 +8,9 @@ springdoc:
     use-root-path: true
   cache:
     disabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

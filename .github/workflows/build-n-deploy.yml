@@ -1,0 +1,25 @@
+name: Build image and deploy to Dockerhub registry
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      steps:
+        - uses: actions/checkout@v2
+
+        - name: Set up JDK 17
+          uses: actions/setup-java@v2
+          with:
+            java-version: '17'
+            distribution: 'corretto'
+            cache: gradle
+
+        - name: Grant execute permission for gradlew
+          run: chmod +x gradlew
+
+        - name: Build and deploy image
+          run: ./gradlew jib --image=oscarcpozas/svc-kotlin-playground

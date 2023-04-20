@@ -18,6 +18,8 @@ Then, from the root directory:
 ./gradlew bootRun
 ```
 
+> **Note:** It may be necessary to give exec permissions to the gradlew script: `chmod +x gradlew`
+
 ### From Docker:
 
 A pre-compiled version is provided in DockerHub registry:
@@ -57,4 +59,5 @@ to generate the Docker image of the service, I've chosen to use the [Google Jib 
 ## Miscellanea
 
 - [OpenFeign](https://github.com/OpenFeign/feign) is used as a HTTP Client, it's inspired on Retrofit
-- Endpoint documentation is available under Swagger UI (OpenAPI) checking `http://localhost:8080/swagger-ui`
+- API documentation is available under Swagger UI (OpenAPI) checking `http://localhost:8080/swagger-ui`
+- Version control strategy uses [Trunk based development](https://trunkbaseddevelopment.com) in combination with [conventional commits messages](https://www.conventionalcommits.org)

@@ -6,7 +6,7 @@ Playground where to test different configurations for a service made with Spring
 
 The repository provides a compiled version of [Gradle build tool](https://gradle.org) called `gradlew` (for unix) and `gradle.bat` (for windows users).
 
-Before starting the project it's necessary to run the [`docker-compose.yml`](https://github.com/oscarcpozas/springboot-svc-playground/blob/master/docker-compose.yml) that defines the external dependencies:
+Before starting the project it's necessary to run the [`docker-compose.yml`](https://github.com/oscarcpozas/springboot-svc-playground/blob/main/docker-compose.yml) that defines the external dependencies:
 
 ```shell
 docker-compose up
@@ -22,7 +22,7 @@ Then, from the root directory:
 
 ### From CLI with Make:
 
-In the root of the project there is a [`Makefile`](https://github.com/oscarcpozas/fever-code-challenge/blob/master/Makefile) that simplifies the launching of some of the most common tasks:
+In the root of the project there is a [`Makefile`](https://github.com/oscarcpozas/fever-code-challenge/blob/main/Makefile) that simplifies the launching of some of the most common tasks:
 
 - `make run`: Build and run the project, remember that it's necessary to have the `docker-compose up`
 - `make test`: Pass all tests. Docker daemon it's necessary for acceptance tests
@@ -70,26 +70,26 @@ patterns have been applied based on the need to.
 
 All project dependencies are collected in a [TOML](https://toml.io/en) file trying to be a reference point, this is especially useful when it is a multi-module project.
 
-[Dependencies file reference](https://github.com/oscarcpozas/springboot-svc-playground/blob/master/gradle/libs.versions.toml)
+[Dependencies file reference](https://github.com/oscarcpozas/springboot-svc-playground/blob/main/gradle/libs.versions.toml)
 
 ### 2. Testing strategy
 
 Despite what the [testing pyramid says](https://martinfowler.com/bliki/TestPyramid.html), I have preferred to base my strategy on 3 sets:
 
-* On the one hand on the **presentation/app layer**, I do [acceptance testing to the REST controllers](https://github.com/oscarcpozas/fever-code-challenge/blob/master/src/test/kotlin/oscar/c/pozas/svc/app/controller/FeverPublicControllerAcceptanceTest.kt).
+* On the one hand on the **presentation/app layer**, I do [acceptance testing to the REST controllers](https://github.com/oscarcpozas/fever-code-challenge/blob/main/src/test/kotlin/oscar/c/pozas/svc/app/controller/FeverPublicControllerAcceptanceTest.kt).
   This type of testing allows to check if the entire system is complying with the established requirements.
 
-* In the **domain layer** I'm performing [unit tests on the use cases](https://github.com/oscarcpozas/fever-code-challenge/blob/master/src/test/kotlin/oscar/c/pozas/svc/domain/usecase/SearchEventsUseCaseTest.kt),
+* In the **domain layer** I'm performing [unit tests on the use cases](https://github.com/oscarcpozas/fever-code-challenge/blob/main/src/test/kotlin/oscar/c/pozas/svc/domain/usecase/SearchEventsUseCaseTest.kt),
   being fast and abstracted from the dependencies with the Spring boot framework or third parties.
 
-* Finally, in the **data layer**, I perform [integration tests of the different data sources](https://github.com/oscarcpozas/fever-code-challenge/blob/master/src/test/kotlin/oscar/c/pozas/svc/infrastructure/datasource/EventsApiDataSourceIntegrationTest.kt)
+* Finally, in the **data layer**, I perform [integration tests of the different data sources](https://github.com/oscarcpozas/fever-code-challenge/blob/main/src/test/kotlin/oscar/c/pozas/svc/infrastructure/datasource/EventsApiDataSourceIntegrationTest.kt)
   to check their communication with these sources.
 
 ## CI / CD
 
-This project has a series of [Github Actions workflows/pipelines](https://github.com/oscarcpozas/springboot-svc-playground/tree/master/.github/workflows) to perform a series of checks on each development.
+This project has a series of [Github Actions workflows/pipelines](https://github.com/oscarcpozas/springboot-svc-playground/tree/main/.github/workflows) to perform a series of checks on each development.
 
-In addition, for each new commit in the master branch, an image of the service is generated and published in
+In addition, for each new commit in the main branch, an image of the service is generated and published in
 the [DockerHub registry](https://hub.docker.com/r/oscarcpozas/svc-kotlin-playground).
 
 After evaluating the different options that [Spring mentions in the official documentation](https://spring.io/guides/topicals/spring-boot-docker)

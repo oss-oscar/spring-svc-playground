@@ -2,7 +2,7 @@ name: Build image and deploy to Dockerhub registry
 
 on:
   push:
-    branches: [ master ]
+    branches: [main]
 
 jobs:
   build:

@@ -10,5 +10,8 @@ class GetPokemonByIdUseCase(
     private val repository: PokemonRepository
 ) {
 
-    operator fun invoke(id: Int): Optional<Pokemon> = repository.findById(id)
+    operator fun invoke(id: Int): Optional<Pokemon> {
+        if (id < 0) { throw IllegalStateException("Poke id cannot be negative") }
+        return repository.findById(id)
+    }
 }

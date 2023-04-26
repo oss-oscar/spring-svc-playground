@@ -17,7 +17,7 @@ class PokemonApiClientDataSource(
     fun get(id: Int): Optional<Pokemon> = Optional.ofNullable(pokemonApiClient.getPokemonById(id.toString())?.toDomain())
 }
 
-@FeignClient(value = "PokeAPI", url = "https://pokeapi.co/api/v2")
+@FeignClient(value = "PokeAPI", url = "\${pokemon.url}")
 interface PokeApiV2Client {
 
     @RequestMapping(method = [RequestMethod.GET], value = ["/pokemon/{id}"])

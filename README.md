@@ -1,5 +1,3 @@
-Playground where to test different configurations for a service made with Spring boot.
-
 ## Running the project
 
 ### From CLI:
@@ -22,7 +20,7 @@ Then, from the root directory:
 
 ### From CLI with Make:
 
-In the root of the project there is a [`Makefile`](https://github.com/oscarcpozas/fever-code-challenge/blob/main/Makefile) that simplifies the launching of some of the most common tasks:
+In the root of the project there is a [`Makefile`](https://github.com/oscarcpozas/blob/main/Makefile) that simplifies the launching of some of the most common tasks:
 
 - `make run`: Build and run the project, remember that it's necessary to have the `docker-compose up`
 - `make test`: Pass all tests. Docker daemon it's necessary for acceptance tests
@@ -40,9 +38,11 @@ docker run -d -p 8080:8080 --name code-challenge oscarcpozas/svc-kotlin-playgrou
 
 > **Note:** All the image versions are build by the CI pipeline
 
-### From GCP without any tool on your side:
+## API documentation
 
-[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run?git_repo=https://github.com/oscarcpozas/springboot-svc-playground.git&dir=playground/spring-boot)
+API documentation is available under Swagger UI (OpenAPI) checking [`http://localhost:8080/swagger-ui`](http://localhost:8080/swagger-ui)
+
+Also, you can access to the documentation in open API spec format on: [`http://localhost:8080/api-docs`](http://localhost:8080/api-docs)
 
 ## Core decisions
 
@@ -68,7 +68,8 @@ patterns have been applied based on the need to.
 
 ### 2. Dependencies management
 
-All project dependencies are collected in a [TOML](https://toml.io/en) file trying to be a reference point, this is especially useful when it is a multi-module project.
+[Gradle 7 introduces](https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog) the option to manage project dependencies using a [TOML](https://toml.io/en) file as a reference
+point for all dependencies. This is especially useful when it is a multi-module project. And this is how I organize it in this project:
 
 [Dependencies file reference](https://github.com/oscarcpozas/springboot-svc-playground/blob/main/gradle/libs.versions.toml)
 
@@ -98,5 +99,6 @@ to generate the Docker image of the service, I've chosen to use the [Google Jib 
 ## Miscellanea
 
 - [OpenFeign](https://github.com/OpenFeign/feign) is used as a HTTP Client, it's inspired on Retrofit
-- API documentation is available under Swagger UI (OpenAPI) checking `http://localhost:8080/swagger-ui`
 - Version control strategy uses [Trunk based development](https://trunkbaseddevelopment.com) in combination with [conventional commits messages](https://www.conventionalcommits.org)
+- I've added an [interceptor that captures calls](https://github.com/oscarcpozas/blob/master/src/main/kotlin/oscar/c/pozas/svc/app/controller/interceptor/RequestTimeInterceptor.kt)
+  to the service and the time it takes to answer

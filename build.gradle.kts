@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    id("org.springframework.boot") version "3.0.5"
-    id("io.spring.dependency-management") version "1.1.0"
-    id("org.jlleitschuh.gradle.ktlint") version "11.3.1"
-    id("com.google.cloud.tools.jib") version "3.3.1"
-    kotlin("jvm") version "1.8.20"
-    kotlin("plugin.spring") version "1.8.20"
+    alias(libs.plugins.springboot)
+    alias(libs.plugins.springboot.dependencyManagement)
+    alias(libs.plugins.ktlint)
+    alias(libs.plugins.jib)
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlin.spring)
 }
 
 group = "oscar.c.pozas"
@@ -47,6 +47,14 @@ dependencies {
 
     // Test dependencies
     testImplementation(libs.springboot.test)
+    testImplementation(libs.mockk)
+
+    testImplementation(libs.restAssured.core)
+    testImplementation(libs.restAssured.kotlin)
+
+    testImplementation(libs.wiremock)
+
+    testImplementation(libs.embeddedDatabase)
 }
 
 tasks.withType<KotlinCompile> {

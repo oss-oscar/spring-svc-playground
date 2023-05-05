@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class SvcKotlinPlaygroundApplication
+class Application
 
 fun main(args: Array<String>) {
-    runApplication<SvcKotlinPlaygroundApplication>(*args)
+    runApplication<Application>(*args)
 }

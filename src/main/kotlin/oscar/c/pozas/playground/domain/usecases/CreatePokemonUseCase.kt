@@ -9,5 +9,5 @@ class CreatePokemonUseCase(
     private val repository: PokemonRepository
 ) {
 
-    operator fun invoke(pokemon: Pokemon) = repository.create(pokemon)
+    operator fun invoke(pokemon: Pokemon): Pokemon = repository.create(pokemon)
 }

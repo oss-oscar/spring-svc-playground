@@ -3,8 +3,11 @@ springdoc:
     enabled: true
     path: /api-docs
   swagger-ui:
-    path: /swagger-ui.html
+    path: /swagger-ui
     tagsSorter: alpha
     use-root-path: true
   cache:
     disabled: true
+
+pokemon:
+  url: https://pokeapi.co/api/v2

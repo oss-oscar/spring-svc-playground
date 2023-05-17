@@ -1,7 +1,10 @@
 package oscar.c.pozas.playground.app.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.github.tomakehurst.wiremock.client.WireMock.*
+import com.github.tomakehurst.wiremock.client.WireMock.get
+import com.github.tomakehurst.wiremock.client.WireMock.ok
+import com.github.tomakehurst.wiremock.client.WireMock.serverError
+import com.github.tomakehurst.wiremock.client.WireMock.stubFor
 import com.github.tomakehurst.wiremock.junit5.WireMockTest
 import io.restassured.RestAssured
 import io.zonky.test.db.AutoConfigureEmbeddedDatabase
@@ -25,16 +28,14 @@ class PokemonControllerAcceptanceTest {
     protected var springBootPort = 0 // Port used during the test is injected
 
     fun getSearchResponseBodyString(expectedStatusCode: HttpStatus, params: Map<String, Any>): String =
-        RestAssured
-            .given()
-                .params(params)
+        RestAssured.given()
+            .params(params)
             .`when`()
-                .port(springBootPort)
-                .get("/public/v1/pokemon/**")
+            .port(springBootPort).get("/public/v1/pokemon/**")
             .then()
-                .statusCode(expectedStatusCode.value())
+            .statusCode(expectedStatusCode.value())
             .extract()
-                .response().body().asString()
+            .response().body().asString()
 
     @Test
     fun `given start_at and end_at valid parameters, when search then return one available event`() {

@@ -11,12 +11,6 @@ The project connects to [PokeAPI](https://pokeapi.co) to retrieve data and manip
 | **Language**      | Kotlin                              | 1.8.21  |
 | **Build**         | Gradle                              | 8.1.1   |
 | **Framework**     | Spring boot                         | 3.0.5   |
-| **Library**       | spring-boot-starter-actuator        | 3.0.5   |
-| **Library**       | spring-boot-starter-data-redis      | 3.0.5   |
-| **Library**       | spring-boot-starter-cache           | 3.0.5   |
-| **Library**       | spring-cloud-starter-openfeign      | 3.0.5   |
-| **Library**       | spring-boot-starter-web             | 3.0.5   |
-| **Library**       | springdoc-openapi-starter-webmvc-ui | 2.1.0   |
 | **Code format**   | Ktlint Gradle                       | 11.3.1  |
 | **Data base**     | PostgreSQL                          | 42.2.27 |
 | **Cache service** | Redis                               | 5.2.0   |

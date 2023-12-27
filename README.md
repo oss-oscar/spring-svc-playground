@@ -101,7 +101,6 @@ the [DockerHub registry](https://hub.docker.com/r/oscarcpozas/svc-kotlin-playgro
 After evaluating the different options that [Spring mentions in the official documentation](https://spring.io/guides/topicals/spring-boot-docker)
 to generate the Docker image of the service, I've chosen to use the [Google Jib plugin](https://github.com/GoogleContainerTools/jib) that brings a number of optimizations.
 
-
 ## Miscellanea
 
 - [OpenFeign](https://github.com/OpenFeign/feign) is used as a HTTP Client, it's inspired on Retrofit

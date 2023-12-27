@@ -1,6 +1,8 @@
 name: PR max line checker
 
-on: [pull_request]
+on:
+  pull_request:
+  merge_group:
 
 concurrency :
   group: pull-request-max-lines_${{ github.head_ref }}

@@ -1,4 +1,4 @@
-name: Build image and deploy to Dockerhub registry
+name: Build and deploy
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Pull request style checker
+name: PR style checker
 
 on: [pull_request]
 

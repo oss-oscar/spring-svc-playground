@@ -3,6 +3,7 @@ name: PR style checker
 on:
   pull_request:
   merge_group:
+    types: [ checks_requested ]
 
 concurrency :
   group: pull-request-styler_${{ github.head_ref }}

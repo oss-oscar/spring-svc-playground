@@ -101,9 +101,11 @@ the [DockerHub registry](https://hub.docker.com/r/oscarcpozas/svc-kotlin-playgro
 After evaluating the different options that [Spring mentions in the official documentation](https://spring.io/guides/topicals/spring-boot-docker)
 to generate the Docker image of the service, I've chosen to use the [Google Jib plugin](https://github.com/GoogleContainerTools/jib) that brings a number of optimizations.
 
+
 ## Miscellanea
 
 - [OpenFeign](https://github.com/OpenFeign/feign) is used as a HTTP Client, it's inspired on Retrofit
 - Version control strategy uses [Trunk based development](https://trunkbaseddevelopment.com) in combination with [conventional commits messages](https://www.conventionalcommits.org)
 - I've added an [interceptor that captures calls](https://github.com/oscarcpozas/blob/master/src/main/kotlin/oscar/c/pozas/svc/app/controller/interceptor/RequestTimeInterceptor.kt)
   to the service and the time it takes to answer
+- I've configure [merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) on repository

@@ -107,3 +107,4 @@ to generate the Docker image of the service, I've chosen to use the [Google Jib 
 - Version control strategy uses [Trunk based development](https://trunkbaseddevelopment.com) in combination with [conventional commits messages](https://www.conventionalcommits.org)
 - I've added an [interceptor that captures calls](https://github.com/oscarcpozas/blob/master/src/main/kotlin/oscar/c/pozas/svc/app/controller/interceptor/RequestTimeInterceptor.kt)
   to the service and the time it takes to answer
+- I've configure [merge queue](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) on repository

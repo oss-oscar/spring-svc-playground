@@ -1,4 +1,4 @@
-name: Pull request max line checker
+name: PR max line checker
 
 on: [pull_request]
 

@@ -7,7 +7,7 @@ services:
     ports:
       - "6379:6379"
 
-  database:
+  postgres:
     image: postgres
     container_name: postgres-svc-kotlin-playground
     environment:
@@ -18,3 +18,11 @@ services:
       - ./docker/postgres:/docker-entrypoint-initdb.d
     ports:
       - "15432:5432"
+
+  clickhouse:
+    image: clickhouse/clickhouse-server
+    container_name: clickhouse-alpine-svc-kotlin-playground
+    volumes:
+      - ./docker/clickhouse/logs:/var/log/clickhouse-server/
+    ports:
+      - "18123:8123"

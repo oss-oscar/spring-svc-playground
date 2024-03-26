@@ -1,7 +1,7 @@
 This project aims to be a guide or template for web services using the Sprinboot framework, a proof of concept where try to put attention to every decision made. The project is open to receive 
 [contributions via PR](https://github.com/oscarcpozas/springboot-svc-playground/pulls) or [issues](https://github.com/oscarcpozas/springboot-svc-playground/issues) to discuss any aspect or decision.
 
-The project connects to [PokeAPI](https://pokeapi.co) to retrieve data and manipulate it.
+The project tries to be a serverless OLAP backend
 
 ## Running the project
 

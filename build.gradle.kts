@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.springboot)
     alias(libs.plugins.springboot.dependencyManagement)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.jib)
-    alias(libs.plugins.kotlin)
-    alias(libs.plugins.kotlin.spring)
 }
 
 kotlin {
@@ -24,19 +24,19 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    // Shared kernel
+    implementation(project(":kernel"))
 
-    // Spring boot dependencies
-    implementation(libs.springboot.web)
-    implementation(libs.springboot.actuator)
-    implementation(libs.springboot.cache)
-    implementation(libs.springboot.data.redis)
+    // Libs
+    implementation(project(":lib:spring-base"))
+
+    // Contexts
+    implementation(project(":context:pokemon"))
+
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
 
     // Spring cloud dependencies
     implementation(libs.springcloud.openFeign)
-
-    // Spring doc Open API Spec
-    implementation(libs.springdoc.openapi)
 
     // Jackson parser
     implementation(libs.jackson.kotlin)

@@ -1,6 +1,8 @@
 plugins {
-    kotlin("jvm")
-    `java-library`
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.kotlin.spring)
+    alias(libs.plugins.springboot)
+    alias(libs.plugins.springboot.dependencyManagement)
 }
 
 repositories {
@@ -8,11 +10,16 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":kernel"))
+
     // Spring boot dependencies
-    implementation(libs.springboot.web)
-    implementation(libs.springboot.actuator)
-    implementation(libs.springboot.cache)
-    implementation(libs.springboot.data.redis)
+    api(libs.springboot.web)
+    api(libs.springboot.actuator)
+    api(libs.springboot.cache)
+    api(libs.springboot.data.redis)
+
+    // Spring doc Open API Spec
+    api(libs.springdoc.openapi)
 }
 
 kotlin {

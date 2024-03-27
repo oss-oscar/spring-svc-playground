@@ -1,4 +1,4 @@
-package oscar.c.pozas.playground.infrastructure.datasource
+package oscar.c.pozas.playground.context.pokemon.infrastructure
 
 import io.mockk.MockKAnnotations
 import io.mockk.every

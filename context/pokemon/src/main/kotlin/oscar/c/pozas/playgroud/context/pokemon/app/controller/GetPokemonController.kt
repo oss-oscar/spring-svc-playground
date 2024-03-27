@@ -5,28 +5,17 @@ import io.swagger.v3.oas.annotations.media.Content
 import io.swagger.v3.oas.annotations.media.Schema
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
-import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.HttpStatus
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.web.bind.annotation.RestController
-import oscar.c.pozas.playgroud.context.pokemon.app.controller.inputmodel.PokemonInputModel
+import org.springframework.web.bind.annotation.*
 import oscar.c.pozas.playgroud.context.pokemon.app.controller.viewmodel.PokemonViewModel
 import oscar.c.pozas.playgroud.context.pokemon.app.controller.viewmodel.toViewModel
-import oscar.c.pozas.playgroud.context.pokemon.domain.Pokemon
-import oscar.c.pozas.playgroud.context.pokemon.domain.service.PokemonCreator
-import oscar.c.pozas.playgroud.context.pokemon.domain.service.PokemonFinder
+import oscar.c.pozas.playgroud.context.pokemon.app.usecase.GetPokemonByIdCommand
+import oscar.c.pozas.playgroud.context.pokemon.app.usecase.GetPokemonByIdCommandHandler
 
 @RestController
 @RequestMapping("public/v1/pokemon")
-@Tag(name = "Pokemon public API")
-class PokemonController(
-    private val pokemonFinder: PokemonFinder,
-    private val pokemonCreator: PokemonCreator,
+class GetPokemonController(
+    private val getPokemonById: GetPokemonByIdCommandHandler
 ) {
 
     @GetMapping("/{id}")
@@ -50,11 +39,5 @@ class PokemonController(
         ]
     )
     @ResponseStatus(HttpStatus.OK)
-    fun findById(@PathVariable("id") id: Int): PokemonViewModel =
-        pokemonFinder(Pokemon.Id(id))!!.toViewModel()
-
-    @PostMapping("/")
-    @Operation(summary = "Create a new custom Pokemon")
-    @ResponseStatus(HttpStatus.CREATED)
-    fun create(@RequestBody input: PokemonInputModel) = pokemonCreator(input.toDomain())
+    fun findById(@PathVariable("id") id: Int): PokemonViewModel = getPokemonById(GetPokemonByIdCommand(id)).toViewModel()
 }

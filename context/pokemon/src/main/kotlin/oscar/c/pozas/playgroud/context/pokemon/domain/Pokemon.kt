@@ -8,6 +8,4 @@ data class Pokemon(
     data class Id(val value: Int)
 
     data class Name(val value: String)
-
-
 }

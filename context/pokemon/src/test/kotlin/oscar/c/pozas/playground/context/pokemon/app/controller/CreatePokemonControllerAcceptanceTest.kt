@@ -1,4 +1,4 @@
-package oscar.c.pozas.playground.app.controller
+package oscar.c.pozas.playground.context.pokemon.app.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.tomakehurst.wiremock.client.WireMock.get
@@ -22,7 +22,7 @@ import org.springframework.util.ResourceUtils
 @WireMockTest(httpPort = 8089)
 @AutoConfigureEmbeddedDatabase(type = POSTGRES, refresh = AFTER_EACH_TEST_METHOD)
 @ActiveProfiles("test")
-class PokemonControllerAcceptanceTest {
+class CreatePokemonControllerAcceptanceTest {
 
     @LocalServerPort
     protected var springBootPort = 0 // Port used during the test is injected

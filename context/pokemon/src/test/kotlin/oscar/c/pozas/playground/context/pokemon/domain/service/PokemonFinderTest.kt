@@ -1,4 +1,4 @@
-package oscar.c.pozas.playground.domain.usecase
+package oscar.c.pozas.playground.context.pokemon.domain.service
 
 import io.mockk.MockKAnnotations
 import io.mockk.every
@@ -14,10 +14,9 @@ import org.junit.jupiter.api.assertThrows
 import oscar.c.pozas.playgroud.context.pokemon.domain.Pokemon
 import oscar.c.pozas.playgroud.context.pokemon.domain.repository.PokemonRepository
 import oscar.c.pozas.playgroud.context.pokemon.domain.service.PokemonFinder
-import java.util.Optional
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class GetPokemonUseCaseTest {
+class PokemonFinderTest {
 
     @MockK
     private lateinit var repository: PokemonRepository

@@ -13,8 +13,6 @@ class PokemonDataRepository(
     private val pokemonStoreDataSource: PokemonStoreDataSource
 ) : PokemonRepository {
 
-    override fun create(pokemon: Pokemon) = pokemonStoreDataSource.save(pokemon)
-
     @Cacheable(value = ["pokemon"])
     override fun findById(id: Pokemon.Id): Pokemon? =
         pokemonStoreDataSource.getById(id.value) ?: pokemonApiClientDataSource.get(id.value)

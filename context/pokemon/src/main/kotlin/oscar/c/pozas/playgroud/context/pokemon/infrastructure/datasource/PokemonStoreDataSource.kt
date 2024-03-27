@@ -16,14 +16,13 @@ class PokemonStoreDataSource {
         Database.connect(url = "jdbc:postgresql://[::1]:15432/pokemon", driver = "org.postgresql.Driver", user = "root", password = "")
     }
 
-    fun save(pokemon: Pokemon): Pokemon {
+    fun save(pokemon: Pokemon) {
         transaction {
             PokemonDAO.new {
                 pokedex = pokemon.id.value
                 name = pokemon.name.value
             }
         }
-        return pokemon
     }
 
     fun getById(id: Int): Pokemon? = transaction { PokemonDAO.findById(id)?.toDomain() }

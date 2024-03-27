@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertThrows
-import oscar.c.pozas.playground.domain.model.Pokemon
-import oscar.c.pozas.playground.domain.repository.PokemonRepository
-import oscar.c.pozas.playground.domain.usecases.GetPokemonByIdUseCase
+import oscar.c.pozas.playgroud.context.pokemon.domain.Pokemon
+import oscar.c.pozas.playgroud.context.pokemon.domain.repository.PokemonRepository
+import oscar.c.pozas.playgroud.context.pokemon.domain.service.PokemonFinder
 import java.util.Optional
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
@@ -23,27 +23,27 @@ class GetPokemonUseCaseTest {
     private lateinit var repository: PokemonRepository
 
     @InjectMockKs
-    private lateinit var getPokemonById: GetPokemonByIdUseCase
+    private lateinit var pokemonFinder: PokemonFinder
 
-    private val pokemon = Pokemon(id = 5, name = "Charmeleon")
+    private val pokemon = Pokemon(id = Pokemon.Id(5), name = Pokemon.Name("Charmeleon"))
 
     @BeforeAll
     fun setUp() {
         MockKAnnotations.init(this)
-        every { repository.findById(POKEMON_ID) }.returns(Optional.of(pokemon))
+        every { repository.findById(POKEMON_ID) }.returns(pokemon)
     }
 
     @Test
     fun `when provided an Id then return a Pokemon`() {
-        val result = getPokemonById(id = POKEMON_ID)
+        val result = pokemonFinder(id = POKEMON_ID)
 
-        assertEquals(pokemon, result.get())
+        assertEquals(pokemon, result)
     }
 
     @Test
     fun `when provided a negative Id the throw an error`() {
         assertThrows<IllegalStateException>("Poke id cannot be negative") {
-            getPokemonById(id = POKEMON_ID * -1)
+            pokemonFinder(id = Pokemon.Id(-1))
         }
     }
 
@@ -53,6 +53,7 @@ class GetPokemonUseCaseTest {
     }
 
     companion object {
-        const val POKEMON_ID = 5
+
+        val POKEMON_ID = Pokemon.Id(5)
     }
 }

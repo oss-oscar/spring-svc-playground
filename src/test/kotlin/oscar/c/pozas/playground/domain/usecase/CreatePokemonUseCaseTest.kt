@@ -8,9 +8,9 @@ import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.api.assertDoesNotThrow
-import oscar.c.pozas.playground.domain.model.Pokemon
-import oscar.c.pozas.playground.domain.repository.PokemonRepository
-import oscar.c.pozas.playground.domain.usecases.CreatePokemonUseCase
+import oscar.c.pozas.playgroud.context.pokemon.domain.Pokemon
+import oscar.c.pozas.playgroud.context.pokemon.domain.repository.PokemonRepository
+import oscar.c.pozas.playgroud.context.pokemon.domain.service.PokemonCreator
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class CreatePokemonUseCaseTest {
@@ -19,9 +19,9 @@ class CreatePokemonUseCaseTest {
     private lateinit var repository: PokemonRepository
 
     @InjectMockKs
-    private lateinit var createPokemon: CreatePokemonUseCase
+    private lateinit var pokemonCreator: PokemonCreator
 
-    private val pokemon = Pokemon(id = 5, name = "Charmeleon")
+    private val pokemon = Pokemon(id = Pokemon.Id(5), name = Pokemon.Name("Charmeleon"))
 
     @BeforeAll
     fun setUp() {
@@ -32,7 +32,7 @@ class CreatePokemonUseCaseTest {
     @Test
     fun `when provided a Pokemon then not throw exception`() {
         assertDoesNotThrow {
-            createPokemon(pokemon)
+            pokemonCreator(pokemon)
         }
     }
 }

@@ -34,7 +34,7 @@ class PokemonFinderTest {
 
     @Test
     fun `when provided an Id then return a Pokemon`() {
-        val result = pokemonFinder(id = POKEMON_ID)
+        val result = pokemonFinder.findBy(id = POKEMON_ID)
 
         assertEquals(pokemon, result)
     }
@@ -42,7 +42,7 @@ class PokemonFinderTest {
     @Test
     fun `when provided a negative Id the throw an error`() {
         assertThrows<IllegalStateException>("Poke id cannot be negative") {
-            pokemonFinder(id = Pokemon.Id(-1))
+            pokemonFinder.findBy(id = Pokemon.Id(-1))
         }
     }
 

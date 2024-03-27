@@ -9,8 +9,8 @@ import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import oscar.c.pozas.playgroud.context.pokemon.app.controller.viewmodel.PokemonViewModel
 import oscar.c.pozas.playgroud.context.pokemon.app.controller.viewmodel.toViewModel
-import oscar.c.pozas.playgroud.context.pokemon.app.usecase.GetPokemonByIdCommand
-import oscar.c.pozas.playgroud.context.pokemon.app.usecase.GetPokemonByIdCommandHandler
+import oscar.c.pozas.playgroud.context.pokemon.app.interactor.GetPokemonByIdCommand
+import oscar.c.pozas.playgroud.context.pokemon.app.interactor.GetPokemonByIdCommandHandler
 
 @RestController
 @RequestMapping("public/v1/pokemon")

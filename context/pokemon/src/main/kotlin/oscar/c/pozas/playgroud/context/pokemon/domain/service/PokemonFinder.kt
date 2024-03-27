@@ -5,5 +5,5 @@ import oscar.c.pozas.playgroud.context.pokemon.domain.repository.PokemonReposito
 
 class PokemonFinder(private val repository: PokemonRepository) {
 
-    operator fun invoke(id: Pokemon.Id): Pokemon? = repository.findById(id)
+    fun findBy(id: Pokemon.Id): Pokemon? = repository.findById(id)
 }

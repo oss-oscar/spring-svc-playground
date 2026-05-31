@@ -36,6 +36,7 @@ dependencies {
 
     // Jackson parser
     implementation(libs.jackson.kotlin)
+    testImplementation(libs.jackson.kotlin)
 
     // Postgres SQL Driver
     implementation(libs.postgresql)
@@ -59,8 +60,22 @@ dependencies {
     testImplementation(libs.wiremock)
 
     testImplementation(libs.embeddedDatabase)
+    testImplementation("com.h2database:h2:2.2.224")
+
+    implementation("org.mongodb:mongodb-driver-kotlin-sync:5.0.0")
+    implementation("org.mongodb:bson-kotlinx:5.0.0")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.5.1")
+
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("io.github.serpro69:kotlin-faker:1.6.0")
 }
 
+dependencyManagement {
+    imports {
+        mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+    }
+}
 
 tasks.named<KotlinCompilationTask<*>>("compileKotlin").configure {
     compilerOptions {

@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.spring)
     alias(libs.plugins.springboot)
     alias(libs.plugins.springboot.dependencyManagement)
+    kotlin("plugin.serialization") version "2.1.20"
 }
 
 group = "oscar.c.pozas"
@@ -22,6 +23,7 @@ dependencies {
 
     // Jackson parser
     implementation(libs.jackson.kotlin)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.1")
 
     // Postgres SQL Driver
     implementation(libs.postgresql)

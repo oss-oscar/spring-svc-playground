@@ -1,6 +1,17 @@
 package oscar.c.pozas.playground.kernel.event
 
-interface DomainEvent {
+import java.time.ZonedDateTime
 
-    fun getType(): String
+abstract class DomainEvent(
+    val aggregateId: String,
+    val payload: Map<String, String> = emptyMap(),
+    val metadata: Metadata = Metadata()
+) {
+
+    abstract fun getType(): String
+
+    data class Metadata(
+        val occurredOn: ZonedDateTime = ZonedDateTime.now(),
+        val version: Long = 1
+    )
 }

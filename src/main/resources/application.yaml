@@ -9,5 +9,15 @@ springdoc:
   cache:
     disabled: true
 
+mongodb:
+  connection: mongodb://localhost:27017
+
 pokemon:
   url: https://pokeapi.co/api/v2
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pokemon
+    username: root
+    password: db_password
+    driver-class-name: org.postgresql.Driver

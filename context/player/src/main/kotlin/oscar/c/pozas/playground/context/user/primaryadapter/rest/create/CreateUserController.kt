@@ -1,4 +1,4 @@
-package oscar.c.pozas.playground.context.player.primaryadapter.rest.create
+package oscar.c.pozas.playground.context.user.primaryadapter.rest.create
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.media.Content
@@ -7,19 +7,19 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.responses.ApiResponses
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
-import oscar.c.pozas.playground.context.player.application.command.CreatePlayerCommand
-import oscar.c.pozas.playground.context.player.application.command.CreatePlayerCommandHandler
+import oscar.c.pozas.playground.context.user.application.command.CreatePlayerCommand
+import oscar.c.pozas.playground.context.user.application.command.CreatePlayerCommandHandler
 import oscar.c.pozas.playground.kernel.idgenerator.IdGenerator
 
 @RestController
 @RequestMapping("public/v1/player")
-class CreatePlayerController(
+class CreateUserController(
     private val handler: CreatePlayerCommandHandler,
     private val idGenerator: IdGenerator,
 ) {
 
     @PostMapping
-    @Operation(summary = "Create a tmp player")
+    @Operation(summary = "Create a new user")
     @ApiResponses(
         value = [
             ApiResponse(
@@ -39,6 +39,9 @@ class CreatePlayerController(
         ]
     )
     @ResponseStatus(HttpStatus.OK)
-    fun createPlayer(@RequestBody body: CreatePlayerInputModel) =
-        handler.handle(CreatePlayerCommand(idGenerator.generate(), body.name))
+    fun createPlayer(@RequestBody body: CreateUserInputModel): CreateUserResponse {
+        val playerId = idGenerator.generate()
+        handler.handle(CreatePlayerCommand(playerId, body.username))
+        return CreateUserResponse(playerId)
+    }
 }

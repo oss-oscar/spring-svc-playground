@@ -23,4 +23,6 @@ dependencies {
 
     // Kafka client
     api(libs.springcloud.kafka.binder)
+
+    api("org.springframework.data:spring-data-jpa:3.5.0")
 }
